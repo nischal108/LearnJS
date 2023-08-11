@@ -1,0 +1,33 @@
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #DDD;
+}
+
+form{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #BBB;
+    border-radius: 8px;
+    padding: 20px 30px;
+}
+button{
+    color: red;
+    padding: 5px 14px;
+}
+
+h3{
+    color: red;
+    font-weight: 300;
+    margin-top: 50px;
+}

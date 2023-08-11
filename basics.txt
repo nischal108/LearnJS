@@ -143,7 +143,7 @@ hello.pop(4);       -----> [1, 2, 3]     // last ko value hatxa
 hello.unshift(0);    -----> [0, 1, 2, 3, 4]    // suru ma value add hunxa
 
 hello.shift()    -------> [2, 3, 4]   /// suru ko value hatxa
-
++
 hello.splice(2,1)-----> [1, 2, 4]     //( bich bich ko value hatauna) second index ko euta value hatxa
 hello.spice(1,2)  -----. [1, 4]    // first index dekhi uta ko 2ta value hato
 
@@ -189,7 +189,7 @@ console.log(nischal.age);    ----> results 4
 
 
 <<   changing tht properties of an object >>
-nischal.age = 24;        ---> now the calue of age property is changed.
+nischal.age = 24;     +   ---> now the calue of age property is changed.
 
 
 
@@ -286,7 +286,7 @@ var b=  a;
  }
  the above condition works  this is true, and if works here but how ?
 
- js ma j lekhe pani they are either in truthy group or falsy group 
+_____________________ js ma j lekhe pani they are either in truthy group or falsy group ____________>
  falsy values =  0 false undefined null NaN(not a number) document.all 
  other all are truthy
 
@@ -303,4 +303,40 @@ switch(1){
 }
 
 
---------<<<<<<<< for each for in   forof  do-while  >>>>>---
+--------<<<<<<<< foreach , for in,   forof,  do-while,  >>>>>---
+
+------------foreach loop----------
+
+works only in array.
+var a=[1, 2, 4, 5, 6, 7,];
+foreach makes change in an duplicate of your array but the original array value is same
+
+a.forEach(function(val){         //always function inside for each , this is a function without name , anonymous function
+    console.log(val+2)
+})
+
+
+--------------forIn-------
+used to do loops i objects
+
+var nischal : {
+    name = "nischal,
+    age="2"
+}
+for(var key in nischal){
+  console.log(key);           // results name and age  
+  console.log(obj[key]);      // results nischal and 2
+  console.log(key, obj[key]);      // results mathi ko {} bhitra ko jastai everything 
+}
+
+--------------- do while ----------
+var a = 12
+do{
+    console.log("hey");
+    a++;
+}
+while (a<15)
+
+condition wrong nei bhaye ni suru ma ekchoti chai execute hunxa
+
+-------------- call back functions ----------
