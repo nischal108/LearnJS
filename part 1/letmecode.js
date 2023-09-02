@@ -81,4 +81,11 @@
 
 //upper program but now th input comes from html boxes
 
+let y= "hello man";
+let z = y.indexOf(" ");
+let firstname = y.slice(0,z);
+let lastname = y.slice(z+1);
+
+console.log(firstname);
+console.log(lastname)
 
