@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> deleting childs</title>
+</head>
+<body style="background-color: black; color: antiquewhite;">
+    
+    <ul class="language">
+    </ul>
+</body>
+<script>
+
+
+    // child creation
+
+    const parent = document.querySelector(".language");
+
+    const addChild = (data) => {
+        const child = document.createElement("li");
+        child.innerHTML = data;
+        child.className ="childrens";
+        parent.appendChild(child);
+    }
+    let length = Number (prompt("Enter the number of childs you want to generate"));
+
+    for(i=1;i<=length;i++){
+        addChild(i);
+    }
+</script>
+</html>

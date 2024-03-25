@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Html</title>
+</head>
+<style>
+    body{
+        background-color: rgb(49, 48, 47);
+        color: bisque;
+    }
+</style>
+<body>
+
+    <h1> Let's Try some Parent Child Manupulation</h1>
+    <ul class="parent">
+        <li class="day">Sunday</li>
+        <li class="day">Monday</li>
+        <li class="day">Tuesday</li>
+    </ul>
+    
+</body>
+<script>
+
+    // -----------------works on child of a parent ------------
+    // const parent  = document.querySelector(".parent");
+    // console.log(parent.children[2].innerHTML);
+    // for (let i = 0; i < parent.children.length; i++) {
+    //    console.log(parent.children[i].innerHTML);
+    // }
+
+    // console.log(parent.firstElementChild.innerHTML);
+    // console.log(parent.lastElementChild.innerHTML)
+    
+
+    // -- ----- from child to parent ================== 
+    // const child = document.querySelector(".day");
+    // console.log(child.innerHTML);
+    // //moving from vhild to parent
+
+    // console.log(child.parentElement);
+    // console.log(child.nextElementSibling.innerHTML);
+
+    // console.log(parent.childNodes);
+
+
+    // --- inseting an element or creating an element ---
+    const div = document.createElement("div");
+    div.className="main";
+    div.style.color ="red";
+    div.innerHTML ="hello guys";
+    console.log(div);
+
+    document.body.appendChild(div);
+</script>
+</html>

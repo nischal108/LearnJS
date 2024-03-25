@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+</head>
+<style>
+
+    .boxes{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .boxes span{
+        width: 100px;
+        height: 100px;
+        border: 2px solid black;
+        margin: 40px;
+    }
+    .boxes span:first-child{
+        background-color: red;
+    }
+    .boxes span:nth-child(2){
+        background-color: pink;
+    }
+    .boxes span:nth-child(3){
+        background-color: green;
+    }
+    .boxes span:nth-child(4){
+        background-color: yellow;
+    }
+</style>
+<body>
+<div id="main">
+
+    <h1> Press any box and the background color will change respectively</h1>
+    <div class="boxes">
+    <span>red</span>
+    <span>pink</span>
+    <span>green</span>
+    <span>yellow</span>
+    </div>
+</div>
+</body>
+<script>
+    const body = document.querySelector("body");
+
+   const boxes =  document.querySelectorAll(".boxes span");
+
+   boxes.forEach((box)=>{
+    box.addEventListener("click", function (e){
+        let selectedItem = e.target;
+        body.style.backgroundColor = selectedItem.innerText;
+    });
+   });
+
+</script>
+</html>
