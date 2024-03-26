@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click to Generate Circle</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .circle {
+        width: 40px; 
+        height: 40px; 
+        background-color: blue; 
+        border-radius: 50%; 
+        position: absolute;
+        display: none; 
+    }
+</style>
+</head>
+<body>
+<script>
+    document.addEventListener('click', function(event) {
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        
+        const x = event.clientX;
+        const y = event.clientY;
+
+        circle.style.left = (x - circle.offsetWidth / 2) + 'px';
+        circle.style.top = (y - circle.offsetHeight / 2) + 'px';
+        circle.style.display = 'block';
+
+        document.body.appendChild(circle);
+    });
+</script>
+</body>
+</html>
