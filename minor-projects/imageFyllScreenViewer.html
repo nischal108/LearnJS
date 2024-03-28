@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #main {
+            padding: 3vw 10vw;
+            width: 100vw;
+            height: 100vh;
+            background-color: antiquewhite;
+            margin: 0 auto;
+        }
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #gallery-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 10px;
+        }
+        .gallery-item {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer; 
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        #full-screen-box {
+            position: fixed;
+            padding: 3vw;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #image-container-fullscreen {
+             width: 100%;
+             height: 100%;
+             background-repeat: no-repeat;
+             background-position: center;
+             background-size: contain;
+        }
+
+        #cross-symbol {
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        #cross-symbol:hover {
+            color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <h1>Image Gallery</h1>
+        </div>
+        <div id="gallery-area"></div>
+    </div>
+
+    <div id="full-screen-box">
+        <div id="image-container-fullscreen"></div>
+        <div id="cross-symbol">X</div>
+    </div>
+
+    <script>
+        const imageLinks = [
+            "https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_1280.jpg",
+            "https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/11/29/03/36/woman-1867093_1280.jpg",
+            "https://cdn.pixabay.com/photo/2018/03/06/22/57/portrait-3204843_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/08/01/08/29/woman-2563491_1280.jpg",
+            "https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490_1280.jpg"
+        ];
+
+        function imageLoader() {
+            const galleryArea = document.getElementById("gallery-area");
+            for (let i = 0; i < imageLinks.length; i++) {
+                let galleryItem = document.createElement("div");
+                galleryItem.classList = "gallery-item";
+                let createdImg = document.createElement("img");
+                createdImg.src = imageLinks[i];
+                galleryItem.appendChild(createdImg);
+                galleryArea.appendChild(galleryItem);
+            }
+        }
+        imageLoader();
+
+        const imageContainers = document.querySelectorAll(".gallery-item");
+        imageContainers.forEach(element => {
+            element.addEventListener("click",(e)=>{
+                displayImage(element);
+            })
+        });
+
+        function displayImage(element){
+            const fullScreen = document.getElementById("full-screen-box");
+            const imageDisplayArea = document.getElementById("image-container-fullscreen");
+            const insideImg = element.querySelector("img");
+            imageDisplayArea.style.backgroundImage = `url(${insideImg.src})`;
+            fullScreen.style.display = "flex";
+        }
+
+        const cross = document.getElementById("cross-symbol");
+        cross.addEventListener("click",()=>{
+            document.getElementById("full-screen-box").style.display = "none";
+        })
+
+    </script>
+</body>
+</html>
