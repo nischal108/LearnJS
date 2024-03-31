@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Github Profile Card</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  .profile-card {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .profile-card img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  .profile-card h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .profile-card p {
+    color: #666;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="profile-card" id="profileCard">
+  <img src="" alt="Profile Image" id="profileImage">
+  <h2 id="profileName"></h2>
+  <p id="followersCount"></p>
+  <p id="followingCount"></p>
+</div>
+
+<script>
+  async function fetchProfileData(username) {
+    try {
+      const response = await fetch(`https://api.github.com/users/nischal108`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching profile data:', error);
+    }
+  }
+
+  async function renderProfileCard(username) {
+    const profileData = await fetchProfileData(username);
+    const profileCard = document.getElementById('profileCard');
+    const profileImage = document.getElementById('profileImage');
+    const profileName = document.getElementById('profileName');
+    const followersCount = document.getElementById('followersCount');
+    const followingCount = document.getElementById('followingCount');
+
+    if (profileData) {
+      profileImage.src = profileData.avatar_url;
+      profileName.textContent = profileData.name || username;
+      followersCount.textContent = `Followers: ${profileData.followers}`;
+      followingCount.textContent = `Following: ${profileData.following}`;
+    } else {
+      profileCard.textContent = 'User not found';
+    }
+  }
+
+  renderProfileCard('nischal108');
+</script>
+
+</body>
+</html>
