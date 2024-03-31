@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Keyboard</title>
+<style>
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-gap: 5px;
+  }
+
+  .key {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .key:hover {
+    background-color: #f0f0f0;
+  }
+
+  .pressed {
+    animation: blink 0.5s infinite alternate;
+  }
+
+  @keyframes blink {
+    0% {
+      background-color: #fff;
+    }
+    100% {
+      background-color: #ffcc00;
+    }
+  }
+
+  #pressedKey {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+<div id="pressedKey">Press any key</div>
+<div class="keyboard" id="keyboard">
+</div>
+
+<script>
+  const pressedKeyDisplay = document.getElementById('pressedKey');
+  const keyboardKeys = [
+    'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+    'Z', 'X', 'C', 'V', 'B', 'N', 'M',
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    '-', '=', '[', ']', '\\', ';', '\'', ',', '.', '/',
+    '`', '~', '!', '@', '#', '$', '%', '^', '&', '*',
+    '(', ')', '_', '+', '{', '}', '|', ':', '"', '<',
+    '>', '?', ' '
+  ];
+
+
+  const keyboardContainer = document.getElementById('keyboard');
+
+  keyboardKeys.forEach(key => {
+    const keyElement = document.createElement('div');
+    keyElement.classList.add('key');
+    keyElement.textContent = key;
+    keyElement.setAttribute('data-key', key);
+    keyboardContainer.appendChild(keyElement);
+  });
+
+  document.addEventListener('keydown', function(event) {
+    const key = event.key.toUpperCase();
+    const pressedKey = document.querySelector(`[data-key="${key}"]`);
+
+    if (pressedKey) {
+      pressedKey.classList.add('pressed');
+      pressedKeyDisplay.textContent = `Last Key Pressed: ${key}`;
+
+      setTimeout(() => {
+        pressedKey.classList.remove('pressed');
+      }, 300);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Background Color</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Random Background Color</h1>
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+</div>
+
+<script>
+  let intervalId;
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  function changeBackgroundColor() {
+    document.body.style.backgroundColor = getRandomColor();
+  }
+
+  document.getElementById('startBtn').addEventListener('click', function() {
+    intervalId = setInterval(changeBackgroundColor, 2000);
+    this.disabled = true;
+    document.getElementById('stopBtn').disabled = false;
+  });
+
+  document.getElementById('stopBtn').addEventListener('click', function() {
+    clearInterval(intervalId);
+    document.getElementById('startBtn').disabled = false;
+    this.disabled = true;
+  });
+</script>
+
+</body>
+</html>
