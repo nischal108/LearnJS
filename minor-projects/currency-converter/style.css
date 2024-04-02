@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .amount,
+  .dropdown {
+    margin-bottom: 1.5rem;
+  }
+  
+  .amount p,
+  .dropdown p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .amount input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+
+  .fa-solid{
+    padding-top: 1.2rem;
+    margin: 0rem 1rem;
+  }
+  
+  .dropdown {
+    display: flex;
+    align-items: center;
+  }
+  
+  .from,
+  .to {
+    flex: 1;
+  }
+  
+  .select-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .select-container img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+  }
+  
+  .select-container select {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+  
+  .msg {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #af4d98;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #824073;
+  }
+  
