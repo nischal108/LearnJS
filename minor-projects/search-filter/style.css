@@ -69,6 +69,6 @@ input[type="text"] {
 
 #profile-list {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Corrected from "1fr, 1fr" to "1fr 1fr" */
-    grid-gap: 10px; /* Optional: Adds gap between grid items */
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 10px; 
 }
